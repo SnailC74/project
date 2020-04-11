@@ -56,5 +56,17 @@ public class Transfer extends threads {
 
 public class Main {
   public static void main(String[] args) {
-    StudentAccount
-
+    StudentAccount sa1 = new StudentAccount("StudentAccount1");
+    StudentAccount sa2 = new StudentAccount("StudentAccount2");
+    
+    sa1.deposit(500.00);
+    sa2.deposit(500.00);
+    
+    Transfer t1 = new Transfer("T1", sa1, sa2, 100.00);
+    Transfer t2 = new Transfer("T2", sa2, sa1, 200.00);
+    
+    t1.start();
+    t2.start();
+  }
+}
+    
