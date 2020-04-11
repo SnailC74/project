@@ -73,4 +73,18 @@ public class Main {
     t2.start();
   }
 }
-    
+
+// Case 1
+// transfer T1 receives the lock of StudentAccount 1 and withdraws the money
+// transfer T1 receives the lock of StudentAccount 2 and deposits the money
+// transfer T1 releases the lock of StudentAccount 1 and StudentAccount 2
+// transfer T2 receives the lock of StudentAccount 2 and withdraws the money
+// transfer T2 receives the lock of StudentAccount 1 and deposits the money
+// transfer T2 releases the lock of StudentAccount 2 and StudentAccount 1
+
+// Case 2
+// transfer T1 receives the lock of StudentAccount 1 and withdraws the money
+// transfer T2 receives the lock of StudentAccount 2 and withdraws the money
+// transfer T1 cannot receive the lock of StudentAccount 2 and deposits the money, it needs to wait for transfer T2 releases the lock of StudentAccount 2
+// transfer T2 cannot receive the lock of StudentAccount 1 and deposits the money, it needs to wait for transfer T1 releases the lock of StudentAccount 1
+// result is Thread Deadlock
