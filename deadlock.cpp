@@ -41,15 +41,19 @@ public class Transfer extends threads {
   }
   
   public void move() {
+    // acquire the lock of StundentAccount 'from'
     synchronized (from) {
       from.withdraw(amount);
-            try {
-                Thread.sleep(500);
-                } catch (InterruptedException e) { }
-                synchronized (to) {
-                  to.deposit(amount);
-                }
+      try {
+        Thread.sleep(500);
+      } catch (InterruptedException e) { }
     }
+    // release the lock of StundentAccount 'from'
+    // acquire the lock of StundentAccount 'to'
+    synchronized (to) {
+      to.deposit(amount);
+    }
+    // release the lock of StundentAccount 'to'
     System.out.println(amount + "is transfered from " + from + " to " + to);
   }
 }
