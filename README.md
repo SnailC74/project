@@ -1,4 +1,3 @@
-# project
 Hongyu Chen
 
 200362471
